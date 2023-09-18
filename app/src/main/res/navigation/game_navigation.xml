@@ -3,16 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/game_navigation"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/item_home">
 
     <fragment
-        android:id="@+id/mainFragment"
+        android:id="@+id/item_home"
         android:name="com.duodinamika.week2anmp.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
             android:id="@+id/actionGameFragment"
             app:destination="@id/gameFragment" />
+        <action
+            android:id="@+id/actionOptionsFragment"
+            app:destination="@id/optionsFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
@@ -33,9 +36,26 @@
         tools:layout="@layout/fragment_result" >
         <action
             android:id="@+id/actionMainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/item_home"
+            app:popUpTo="@id/item_home"
+            app:popUpToInclusive="true" />
         <argument
             android:name="score"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/item_history"
+        android:name="com.duodinamika.week2anmp.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/item_profile"
+        android:name="com.duodinamika.week2anmp.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <dialog
+        android:id="@+id/optionsFragment"
+        android:name="com.duodinamika.week2anmp.OptionsFragment"
+        android:label="fragment_options"
+        tools:layout="@layout/fragment_options" />
 </navigation>
